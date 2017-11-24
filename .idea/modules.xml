@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/scala-tetris.iml" filepath="$PROJECT_DIR$/scala-tetris.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-tetris_main.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-tetris_main.iml" group="scala-tetris" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-tetris_test.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-tetris_test.iml" group="scala-tetris" />
+    </modules>
+  </component>
+</project>

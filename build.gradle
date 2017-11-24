@@ -1,0 +1,31 @@
+group 'me.afox'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'idea'
+
+ext {
+    scalaVersion = '2.12.4'
+}
+
+sourceSets.main.scala.srcDirs = ['./domain/src','./swing-ui/src','./console/src']
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.scala-lang:scala-library:$scalaVersion")
+    compile("org.scala-lang:scala-reflect:$scalaVersion")
+    //compile("org.scalaz:scalaz-core:7.2.16")
+    compile("org.scala-lang.modules:scala-swing_2.12:2.0+")
+
+    // Your other deps here
+
+    testCompile(group: 'junit', name: 'junit', version: '4.12')
+}
+
+

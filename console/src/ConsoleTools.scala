@@ -1,7 +1,7 @@
 package me.afox.tetriss.console
 
 import me.afox.tetriss.console.ConsoleTools.Renderers
-import me.afox.tetriss.data.Pod
+import me.afox.tetriss.data.{Figures, Pod}
 
 object ConsoleTools {
   trait ConsoleRenderer {
@@ -30,9 +30,15 @@ object ConsoleBootstrap {
   import Renderers._
 
   def main(args: Array[String]): Unit = {
-    val pod = new Pod()
+    val pod = new Pod() inject Figures.F_LL
+    val move1 = pod.stepDown.stepDown.stepDown.stepDown.stepDown.stepDown.rotate.commit
 
-    ConsoleTools.out(pod)
+    ConsoleTools.out(move1)
+    println("_____________________________________________________________")
+
+    val move2 = (move1 inject Figures.F_LR).rotate.commit
+
+    ConsoleTools.out(move2)
 
   }
 }

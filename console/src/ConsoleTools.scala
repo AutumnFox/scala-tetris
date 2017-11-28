@@ -1,44 +1,43 @@
 package me.afox.tetriss.console
 
-import me.afox.tetriss.console.ConsoleTools.Renderers
 import me.afox.tetriss.data.{Figures, Pod}
 
+trait Renderer[T] {
+  def render: Seq[T]
+}
+trait ConsoleRenderer extends Renderer[String]
+
 object ConsoleTools {
-  trait ConsoleRenderer {
-    def render: Seq[String]
-  }
-
-  // wrapped class
-  class PodRenderer(data: Pod) extends ConsoleRenderer {
-    def render = data.lines.map(line =>
-        line.map(cell =>
-          cell.map(brick => "#").getOrElse("_")
-        ).mkString("|")
-      )
-  }
-
   def out(renderer: ConsoleRenderer) = {
     renderer.render foreach (s => println("|"+s+"|"))
-  }
-
-  object Renderers {
-    implicit def wrap(pod: Pod) = new PodRenderer(pod)
   }
 }
 
 object ConsoleBootstrap {
-  import Renderers._
+  implicit class ConsolePodRenderer(data: Pod) extends ConsoleRenderer {
+    def render = data.lines.map(line =>
+      line.map(cell =>
+        cell.map(brick => "#").getOrElse("_")
+      ).mkString("|")
+    )
+  }
+
+  def letsFall(nextStep: Pod): Pod = {
+    ConsoleTools.out(nextStep commit)
+    println("_____________________________________________________________")
+
+    Thread.sleep(100)
+
+    if(nextStep.stepDown.testCommit) letsFall(nextStep.stepDown)
+    else nextStep commit
+  }
 
   def main(args: Array[String]): Unit = {
     val pod = new Pod() inject Figures.F_LL
-    val move1 = pod.stepDown.stepDown.stepDown.stepDown.stepDown.stepDown.rotate.commit
 
-    ConsoleTools.out(move1)
-    println("_____________________________________________________________")
-
-    val move2 = (move1 inject Figures.F_LR).rotate.commit
-
-    ConsoleTools.out(move2)
+    val move1 = letsFall(pod.rotate)
+    val move2 = letsFall(move1 inject Figures.F_LR)
+    letsFall(move2 inject Figures.F_I rotate)
 
   }
 }

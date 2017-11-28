@@ -12,42 +12,59 @@ case class Pod(lines: Pod.Lines = Pod.empty.lines, position: Block = Block(4,1),
   def stepDown = new Pod(lines = lines, figure = Some(figure.get.move(down)))
   def rotate = new Pod(lines = lines, figure = Some(figure.get.rotates.head))
 
-  /**
-    * Place the current figure in the pod, current figure became None
-    * @return
-    */
-  def commit = {
-    def addCommittedRow(rowNumber: Int = 0, restOfRows: Pod.Lines): Pod.Lines = {
-      def addCommittedCell(colNumber: Int = 0, rowNumber: Int, restOdCells: Pod.Row): Pod.Row = {
-        restOdCells match {
-          case (head::tail) => {
-            colNumber match {
-              case Pod.COLUMNS => Seq(figure.get.brickAt(colNumber, rowNumber))
-              case col =>   (figure.get.brickAt(col, rowNumber) match {
-                  case Some(brick) => Some(brick)
-                  case None => head
-              })  +: addCommittedCell(colNumber + 1, rowNumber, tail)
-            }
-          }
-          case _ => Seq()
-        }
+  def aggregatePod[T_AGGREGATED_ROW,T_AGGREGATED_CELL,T_CELL] (
+                            cellExtractor: (Int, Int, Option[Brick]) => T_CELL,
+
+                            cellBase: T_AGGREGATED_CELL,
+                            cellAggregator: (T_CELL,T_AGGREGATED_CELL) => T_AGGREGATED_CELL,
+
+                            rowBase: T_AGGREGATED_ROW,
+                            rowAggregator: (T_AGGREGATED_CELL, T_AGGREGATED_ROW) => T_AGGREGATED_ROW): T_AGGREGATED_ROW = {
+
+    def aggregateRow(rowNumber: Int = 0, restOfRows: Pod.Lines): T_AGGREGATED_ROW = {
+      def aggregateCell(colNumber: Int = 0, rowNumber: Int, restOfCells: Pod.Row): T_AGGREGATED_CELL =  restOfCells match {
+          case (head :: Seq()) => cellAggregator(cellExtractor(colNumber, rowNumber, head), cellBase)
+          case (head :: tail)  => cellAggregator(cellExtractor(colNumber, rowNumber, head),
+                                                 aggregateCell(colNumber + 1, rowNumber, tail))
       }
 
       restOfRows match {
-        case (head::tail) => {
-          rowNumber match {
-            case Pod.ROWS => Seq(addCommittedCell(0, rowNumber, head))
-            case n => addCommittedCell(0, rowNumber, head) +: addCommittedRow(n + 1, tail)
-          }
-        }
-        case _ => Seq(addCommittedCell(0, rowNumber, Seq()))
+        case (head :: Seq()) => rowAggregator(aggregateCell(0, rowNumber, head), rowBase)
+        case (head :: tail)  => rowAggregator(aggregateCell(0, rowNumber, head), aggregateRow(rowNumber + 1, tail))
       }
     }
 
-    new Pod(addCommittedRow(0, lines))
+    aggregateRow(0,lines)
+  }
+
+  def testCommit: Boolean = {
+    figure.forall(
+      f => f.maxRow < Pod.ROWS && f.maxCol < Pod.COLUMNS &&
+        aggregatePod(
+          cellExtractor = (colNumber: Int, rowNumber: Int, rowHead: Option[Brick]) => figure.get.brickAt(colNumber, rowNumber).isEmpty || rowHead.isEmpty,
+
+          cellBase = true,
+          cellAggregator = (rowHead: Boolean, aggregatedRow: Boolean) => rowHead && aggregatedRow,
+
+          rowBase = true,
+          rowAggregator  = (podHead: Boolean, aggregatedPod: Boolean) => podHead && aggregatedPod
+        ))
   }
 
 
+  def commit : Pod = {
+    if(figure.isEmpty) return this
+
+    new Pod(aggregatePod(
+      cellExtractor = (colNumber: Int, rowNumber: Int, rowHead: Option[Brick]) => figure.get.brickAt(colNumber, rowNumber) orElse rowHead,
+
+      cellBase = Seq(),
+      cellAggregator = (cell: Option[Brick], aggregatedCells: Pod.Row) => cell +: aggregatedCells,
+
+      rowBase  = Seq(),
+      rowAggregator = (row: Pod.Row, aggregatedRows: Seq[Pod.Row]) => row +: aggregatedRows
+    ))
+  }
 }
 
 object Pod {

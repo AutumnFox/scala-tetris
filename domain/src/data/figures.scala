@@ -1,6 +1,7 @@
 package me.afox.tetriss.data
 
 import java.awt.Color
+import scala.language.postfixOps
 
 // Available brick colours
 object Bricks {

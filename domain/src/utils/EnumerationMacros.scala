@@ -4,6 +4,7 @@ import scala.language.experimental.macros
 
 import scala.reflect.macros.blackbox.Context
 import scala.collection.immutable.TreeSet
+import scala.language.postfixOps
 
 /*
 A macro to produce a TreeSet of all instances of a sealed trait.

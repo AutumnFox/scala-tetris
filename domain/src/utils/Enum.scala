@@ -1,5 +1,7 @@
 package me.afox.tetriss.utils
 
+import scala.language.postfixOps
+
 trait Enum { //DIY enum type
   import java.util.concurrent.atomic.AtomicReference //Concurrency paranoia
 

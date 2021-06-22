@@ -2,6 +2,8 @@ package me.afox.tetriss.ui
 
 import scala.swing._
 
+import scala.language.postfixOps
+
 abstract class BasePane extends BoxPanel(Orientation.Vertical) {
   def HEIGHT = 320 * 3
   def WIDTH : Int

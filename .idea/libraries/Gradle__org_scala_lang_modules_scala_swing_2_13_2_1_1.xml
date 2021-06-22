@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.scala-lang.modules:scala-swing_2.13:2.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang.modules/scala-swing_2.13/2.1.1/1cf453825904aa90cb4b705a6ed485de6abea73e/scala-swing_2.13-2.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.scala-lang.modules/scala-swing_2.13/2.1.1/139a1a0a9588cd684533054ca75849b3f517218c/scala-swing_2.13-2.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

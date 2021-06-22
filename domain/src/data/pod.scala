@@ -4,7 +4,7 @@ import Bricks._
 import Figures._
 
 import scala.collection.immutable.Stream.Empty
-
+import scala.language.postfixOps
 
 case class Pod(lines: Pod.Lines = Pod.empty.lines, position: Block = Block(4,1), figure: Option[Figure] = None) {
 

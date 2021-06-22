@@ -2,6 +2,7 @@ package me.afox.tetriss
 import scala.swing._
 
 import me.afox.tetriss.ui._
+import scala.language.postfixOps
 
 object Bootstrap {
   def main(args: Array[String]): Unit = {

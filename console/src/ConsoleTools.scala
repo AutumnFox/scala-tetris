@@ -1,6 +1,7 @@
 package me.afox.tetriss.console
 
 import me.afox.tetriss.data.{Figures, Pod}
+import scala.language.postfixOps
 
 trait Renderer[T] {
   def render: Seq[T]

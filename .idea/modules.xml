@@ -3,8 +3,18 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/scala-tetris.iml" filepath="$PROJECT_DIR$/scala-tetris.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-tetris_main.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-tetris_main.iml" group="scala-tetris" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-tetris_test.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-tetris_test.iml" group="scala-tetris" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-tetris.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-tetris.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-tetris.buildSrc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-tetris.buildSrc.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-tetris.buildSrc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-tetris.buildSrc.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/console/scala-tetris.console.iml" filepath="$PROJECT_DIR$/.idea/modules/console/scala-tetris.console.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/console/scala-tetris.console.main.iml" filepath="$PROJECT_DIR$/.idea/modules/console/scala-tetris.console.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/console/scala-tetris.console.test.iml" filepath="$PROJECT_DIR$/.idea/modules/console/scala-tetris.console.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/scala-tetris.domain.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/scala-tetris.domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/scala-tetris.domain.main.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/scala-tetris.domain.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/scala-tetris.domain.test.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/scala-tetris.domain.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/swing-ui/scala-tetris.gdx-ui.iml" filepath="$PROJECT_DIR$/.idea/modules/swing-ui/scala-tetris.gdx-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gdx-ui/scala-tetris.gdx-ui.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gdx-ui/scala-tetris.gdx-ui.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gdx-ui/scala-tetris.gdx-ui.test.iml" filepath="$PROJECT_DIR$/.idea/modules/gdx-ui/scala-tetris.gdx-ui.test.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,55 @@
+plugins {
+    id 'me.afox.tetriss.scala-application-conventions'
+}
+
+project.ext.gdxVersion = '1.10.0'
+project.ext.roboVMVersion = '2.3.12'
+project.ext.box2DLightsVersion = '1.5'
+project.ext.ashleyVersion = '1.7.3'
+project.ext.aiVersion = '1.8.2'
+project.ext.gdxControllersVersion = '2.1.0'
+
+//project.ext.lwjglVersion = "3.2.3"
+//project.ext.lwjglNatives = "natives-windows"
+
+dependencies {
+    implementation 'org.apache.commons:commons-text'
+    implementation project(':domain')
+//    implementation 'org.scala-lang.modules:scala-swing_2.13:2.1.1+'
+
+    // lwgl getting started deps
+//    implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+//
+//    implementation "org.lwjgl:lwjgl"
+//    implementation "org.lwjgl:lwjgl-assimp"
+//    implementation "org.lwjgl:lwjgl-bgfx"
+//    implementation "org.lwjgl:lwjgl-glfw"
+//    implementation "org.lwjgl:lwjgl-nanovg"
+//    implementation "org.lwjgl:lwjgl-nuklear"
+//    implementation "org.lwjgl:lwjgl-openal"
+//    implementation "org.lwjgl:lwjgl-opengl"
+//    implementation "org.lwjgl:lwjgl-par"
+//    implementation "org.lwjgl:lwjgl-stb"
+//    implementation "org.lwjgl:lwjgl-vulkan"
+//
+//    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+//    runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
+//    runtimeOnly "org.lwjgl:lwjgl-bgfx::$lwjglNatives"
+//    runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+//    runtimeOnly "org.lwjgl:lwjgl-nanovg::$lwjglNatives"
+//    runtimeOnly "org.lwjgl:lwjgl-nuklear::$lwjglNatives"
+//    runtimeOnly "org.lwjgl:lwjgl-openal::$lwjglNatives"
+//    runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+//    runtimeOnly "org.lwjgl:lwjgl-par::$lwjglNatives"
+//    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
+
+    implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+    implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    implementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+    implementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'me.afox.tetriss.Bootstrap'
+}

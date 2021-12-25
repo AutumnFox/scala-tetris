@@ -8,5 +8,12 @@
         <parameter value="-target:jvm-1.8" />
       </parameters>
     </profile>
+    <profile name="Gradle 2" modules="scala-tetris.console.main,scala-tetris.console.test,scala-tetris.domain.main,scala-tetris.domain.test,scala-tetris.gdx-ui.main,scala-tetris.gdx-ui.test,scala-tetris.main,scala-tetris.test">
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <parameters>
+        <parameter value="-target:jvm-13" />
+      </parameters>
+    </profile>
   </component>
 </project>

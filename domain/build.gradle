@@ -3,11 +3,11 @@
  */
 
 //plugins {
-//    id 'me.afox.tetriss.scala-application-conventions'
+//    id 'me.afox.tetris.scala-application-conventions'
 //}
 
 plugins {
-    id 'me.afox.tetriss.scala-library-conventions'
+    id 'me.afox.tetris.scala-library-conventions'
 }
 
 dependencies {
@@ -17,5 +17,5 @@ dependencies {
 
 //application {
     // Define the main class for the application.
-   // mainClass = 'me.afox.tetriss.app.App'
+   // mainClass = 'me.afox.tetris.app.App'
 //}

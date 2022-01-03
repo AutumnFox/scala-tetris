@@ -1,5 +1,5 @@
 plugins {
-    id 'me.afox.tetriss.scala-application-conventions'
+    id 'me.afox.tetris.scala-application-conventions'
 }
 
 project.ext.gdxVersion = '1.10.0'
@@ -51,5 +51,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'me.afox.tetriss.Bootstrap'
+    mainClass = 'me.afox.tetris.Bootstrap'
 }
